@@ -297,7 +297,7 @@ Description: Sets the bandwidth (BW) for acquisition duration while preserving o
 ## Usage Example
 
 Here's an example illustrating how to use this library with an ESP32.
-
+```c
 #include "mmc5603.h"
 
 void app_main() {
@@ -346,13 +346,13 @@ void app_main() {
     // Get configuration information
     mmc5603_get_informations();
 }
-
+```
 ## Troubleshooting
 
-    Reading Issues:
-        Verify I2C connections and ensure the communication frequency is correct (<= 400000 Hz).
-        Ensure the sensor is properly powered.
-        Make sure you have a 2.2 kΩ pull-up resistor between 3.3V and SDA/SCL or set pushup option in I2C module.
+### Reading Issues:
+* Verify I2C connections and ensure the communication frequency is correct (<= 400000 Hz).
+* Ensure the sensor is properly powered.
+* Make sure you have a 2.2 kΩ pull-up resistor between 3.3V and SDA/SCL or set pushup option in I2C module.
 
 ## Support
 
@@ -361,10 +361,3 @@ For any technical questions or bug reports, please contact me at Bertrand.selva@
 ## License
 
 This project is licensed under the MIT License. For more details, see the LICENSE file.
-Additional Information
-
-    File Structure: The README is organized into clear and concise sections to facilitate easy navigation and understanding.
-    Function Documentation: Each library function is detailed with its description, arguments, and return values, making it easy to use.
-    Code Example: A practical example demonstrates how to initialize the sensor, read magnetic data and temperature, and configure power mode.
-    Troubleshooting: A dedicated section helps resolve common issues encountered while using the library.
-    Support: Information on how to get help is provided through email contact.
