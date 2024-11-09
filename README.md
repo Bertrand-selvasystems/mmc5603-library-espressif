@@ -59,7 +59,7 @@ Before using the library, configure the I2C pins and other necessary parameters 
 #define I2C_MASTER_SDA_IO           17    /*!< GPIO number used for I2C master data  */
 #define I2C_MASTER_NUM              I2C_NUM_0 /*!< I2C port number for master device */
 #define I2C_MASTER_FREQ_HZ          100000 /*!< I2C master clock frequency */
-
+```
 
 ## Function Documentation
 ### esp_err_t mmc5603_init()
