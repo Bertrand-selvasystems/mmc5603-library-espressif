@@ -247,14 +247,18 @@ Return: esp_err_t
 * Error code otherwise
 Details: Configures the Prd_set bits to define the number of measurements taken before an automatic SET operation is executed. This feature only works in continuous mode with both En_prd_set and Auto_SR enabled.
 Prd_set values and corresponding measurement intervals:
-0b000: Execute SET after every 1 sample
-0b001: Execute SET after every 25 samples
-0b010: Execute SET after every 75 samples
-0b011: Execute SET after every 100 samples
-0b100: Execute SET after every 250 samples
-0b101: Execute SET after every 500 samples
-0b110: Execute SET after every 1000 samples
-0b111: Execute SET after every 2000 samples
+
+| Binary Code | Action                                 |
+|-------------|----------------------------------------|
+| 0b000       | Execute SET after every 1 sample       |
+| 0b001       | Execute SET after every 25 samples     |
+| 0b010       | Execute SET after every 75 samples     |
+| 0b011       | Execute SET after every 100 samples    |
+| 0b100       | Execute SET after every 250 samples    |
+| 0b101       | Execute SET after every 500 samples    |
+| 0b110       | Execute SET after every 1000 samples   |
+| 0b111       | Execute SET after every 2000 samples   |
+
 
 Required Conditions:
 * The sensor must be in continuous mode.
