@@ -66,233 +66,229 @@ Before using the library, configure the I2C pins and other necessary parameters 
 
 Description: Initializes the MMC5603 sensor by configuring the initial parameters for reading magnetic field data.
 
-    Arguments: None
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Prepares the sensor for measurements by enabling necessary initial settings.
+Arguments: None
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Prepares the sensor for measurements by enabling necessary initial settings.
 
 ### esp_err_t mmc5603_read_single_measurement(float *x, float *y, float *z, bool autoset)
 
 Description: Reads a single magnetic field measurement for the X, Y, and Z axes.
 
-    Arguments:
-        float *x: Pointer to store the X-axis magnetic field value.
-        float *y: Pointer to store the Y-axis magnetic field value.
-        float *z: Pointer to store the Z-axis magnetic field value.
-        bool autoset: Enable or disable automatic SET mode.
-    Return: esp_err_t
-        ESP_OK if the read was successful
-        ESP_FAIL otherwise
-    Details: Performs a magnetic field value read for each axis and stores them in the provided pointers.
+Arguments:
+* float *x: Pointer to store the X-axis magnetic field value.
+* float *y: Pointer to store the Y-axis magnetic field value.
+* float *z: Pointer to store the Z-axis magnetic field value.
+* bool autoset: Enable or disable automatic SET mode.
+Return: esp_err_t
+* ESP_OK if the read was successful
+* ESP_FAIL otherwise
+Details: Performs a magnetic field value read for each axis and stores them in the provided pointers.
 
 ### float mmc5603_read_temperature()
 
 Description: Reads the current temperature measured by the sensor.
 
-    Arguments: None
-    Return: float
-        Temperature value in degrees Celsius
-    Details: Retrieves the internal temperature of the sensor, useful for thermal calibration.
+Arguments: None
+Return: float Temperature value in degrees Celsius
+Details: Retrieves the internal temperature of the sensor, useful for thermal calibration.
 
 ### esp_err_t mmc5603_do_set()
 
 Description: Performs a SET operation on the sensor.
 
-    Arguments: None
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Applies a SET operation to enhance measurement accuracy.
+Arguments: None
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Applies a SET operation to enhance measurement accuracy.
 
 ### esp_err_t mmc5603_do_reset()
 
 Description: Performs a RESET operation on the sensor.
 
-    Arguments: None
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Resets the sensor to restore default settings.
+Arguments: None
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Resets the sensor to restore default settings.
 
 ### esp_err_t mmc5603_get_offset(float *offset_x, float *offset_y, float *offset_z)
 
 Description: Calculates and retrieves offsets for each axis X, Y, and Z.
 
-    Arguments:
-        float *offset_x: Pointer to store the X-axis offset.
-        float *offset_y: Pointer to store the Y-axis offset.
-        float *offset_z: Pointer to store the Z-axis offset.
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Calculates offsets to correct biases in magnetic field measurements.
+Arguments:
+* float *offset_x: Pointer to store the X-axis offset.
+* float *offset_y: Pointer to store the Y-axis offset.
+* float *offset_z: Pointer to store the Z-axis offset.
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Calculates offsets to correct biases in magnetic field measurements.
 
 ### esp_err_t mmc5603_self_test()
 
 Description: Executes a self-test of the sensor to verify its proper functioning.
 
-    Arguments: None
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Requests the sensor to perform a self-test sequence, verifying the validity of its data. The auto_st_en bit resets after the operation.
+Arguments: None
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Requests the sensor to perform a self-test sequence, verifying the validity of its data. The auto_st_en bit resets after the operation.
 
 ### void mmc5603_get_informations()
 
 Description: Displays information from the sensor's configuration registers.
 
-    Arguments: None
-    Return: None
-    Details: Reads multiple configuration registers from the MMC5603 device and displays their values along with interpretations of specific bits in each register. In case of a read error, an error message is displayed for each affected register.
+Arguments: None
+Return: None
+Details: Reads multiple configuration registers from the MMC5603 device and displays their values along with interpretations of specific bits in each register. In case of a read error, an error message is displayed for each affected register.
 
 ### esp_err_t mmc5603_reset()
 
 Description: Performs a software reset on the sensor.
 
-    Arguments: None
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Resets the sensor by clearing current configurations and restoring default settings.
+Arguments: None
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Resets the sensor by clearing current configurations and restoring default settings.
 
 ### esp_err_t mmc5603_set_auto_sr(bool enable)
 
 Description: Enables or disables the sensor's automatic SET/RESET function.
 
-    Arguments:
-        bool enable: true to enable, false to disable
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Enables or disables the automatic SET/RESET functionality to improve measurement accuracy.
+Arguments:
+* bool enable: true to enable, false to disable
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Enables or disables the automatic SET/RESET functionality to improve measurement accuracy.
 
 ### esp_err_t mmc5603_set_odr(uint8_t frequency_hz)
 
 Description: Sets the acquisition frequency (ODR - Output Data Rate).
 
-    Arguments:
-        uint8_t frequency_hz: Frequency in Hertz (0 for 1000 Hz)
-    Return: esp_err_t
-        ESP_OK if the operation was successful
-        Error code otherwise
-    Details: Configures the sensor's data output frequency.
+Arguments:
+* uint8_t frequency_hz: Frequency in Hertz (0 for 1000 Hz)
+Return: esp_err_t
+* ESP_OK if the operation was successful
+* Error code otherwise
+Details: Configures the sensor's data output frequency.
 
 ### esp_err_t mmc5603_set_hpower(bool enable)
 
 Description: Enables or disables high-power mode (required for 1000 Hz).
 
-    Arguments:
-        bool enable: true to enable, false to disable
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Enables or disables high-power mode for high-frequency measurements.
+Arguments:
+* bool enable: true to enable, false to disable
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Enables or disables high-power mode for high-frequency measurements.
 
 ### esp_err_t mmc5603_enable_continuous_mode(uint8_t acquisition_frequency_hz)
 
 Description: Enables continuous mode with a specified acquisition frequency.
 
-    Arguments:
-        uint8_t acquisition_frequency_hz: Acquisition frequency in Hertz
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Configures the sensor for continuous measurements with the specified acquisition frequency.
+Arguments:
+* uint8_t acquisition_frequency_hz: Acquisition frequency in Hertz
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Configures the sensor for continuous measurements with the specified acquisition frequency.
 
 ### esp_err_t mmc5603_disable_continuous_mode()
 
 Description: Disables the sensor's continuous mode.
 
-    Arguments: None
-    Return: esp_err_t
-        ESP_OK if the operation was successful
-        Error code otherwise
-    Details: Stops continuous measurements, allowing for single-point readings.
+Arguments: None
+Return: esp_err_t
+* ESP_OK if the operation was successful
+* Error code otherwise
+Details: Stops continuous measurements, allowing for single-point readings.
 
 ### esp_err_t mmc5603_set_periodic_set(uint8_t prd_set_value)
 
 Description: Sets the Prd_set configuration for the MMC5603 sensor.
 
-    Arguments:
-        uint8_t prd_set_value: Desired value for Prd_set (0-7)
-
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-
-    Details: Configures the Prd_set bits to define the number of measurements taken before an automatic SET operation is executed. This feature only works in continuous mode with both En_prd_set and Auto_SR enabled.
-        Prd_set values and corresponding measurement intervals:
-            0b000: Execute SET after every 1 sample
-            0b001: Execute SET after every 25 samples
-            0b010: Execute SET after every 75 samples
-            0b011: Execute SET after every 100 samples
-            0b100: Execute SET after every 250 samples
-            0b101: Execute SET after every 500 samples
-            0b110: Execute SET after every 1000 samples
-            0b111: Execute SET after every 2000 samples
-
-    Required Conditions:
-        The sensor must be in continuous mode.
-        En_prd_set (bit 3) and Auto_SR (automatic SET/RESET) must both be enabled.
+Arguments:
+* uint8_t prd_set_value: Desired value for Prd_set (0-7)
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Configures the Prd_set bits to define the number of measurements taken before an automatic SET operation is executed. This feature only works in continuous mode with both En_prd_set and Auto_SR enabled.
+Prd_set values and corresponding measurement intervals:
+0b000: Execute SET after every 1 sample
+0b001: Execute SET after every 25 samples
+0b010: Execute SET after every 75 samples
+0b011: Execute SET after every 100 samples
+0b100: Execute SET after every 250 samples
+0b101: Execute SET after every 500 samples
+0b110: Execute SET after every 1000 samples
+0b111: Execute SET after every 2000 samples
+Required Conditions:
+* The sensor must be in continuous mode.
+* En_prd_set (bit 3) and Auto_SR (automatic SET/RESET) must both be enabled.
 
 ### esp_err_t mmc5603_periodic_set_enable(bool enable)
 
 Description: Enables or disables periodic SET based on Prd_set.
 
-    Arguments:
-        bool enable: true to enable periodic SET; false to disable periodic SET
-    Return: esp_err_t
-        ESP_OK if the operation succeeded
-        Error code otherwise
-    Details: Enables or disables the periodic SET functionality, requiring the sensor to be in continuous mode, Auto_SR enabled, and Prd_set configured with the number of samples before each SET cycle.
+Arguments:
+* bool enable: true to enable periodic SET; false to disable periodic SET
+Return: esp_err_t
+* ESP_OK if the operation succeeded
+* Error code otherwise
+Details: Enables or disables the periodic SET functionality, requiring the sensor to be in continuous mode, Auto_SR enabled, and Prd_set configured with the number of samples before each SET cycle.
 
 ### esp_err_t mmc5603_set_permanent_set_mode(bool enable)
 
 Description: Enables or disables the sensor's permanent SET function.
 
-    Arguments:
-        bool enable: true to enable, false to disable
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Sets the St_enp bit in the CTRL1 register to apply a continuous positive current for permanent SET. The function respects other static configuration settings, such as the bw value (bandwidth) on bits 0 and 1.
+Arguments:
+* bool enable: true to enable, false to disable
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Sets the St_enp bit in the CTRL1 register to apply a continuous positive current for permanent SET. The function respects other static configuration settings, such as the bw value (bandwidth) on bits 0 and 1.
 
 ### esp_err_t mmc5603_disable_periodic_set()
 
 Description: Disables the periodic SET function.
 
-    Arguments: None
-    Return: esp_err_t
-        ESP_OK if the operation was successful
-        Error code otherwise
-    Details: Disables the periodic SET by clearing the En_prd_set bit (bit 3) in the CTRL2 register while preserving other settings, including Prd_set, continuous mode, and high-power mode.
+Arguments: None
+Return: esp_err_t
+* ESP_OK if the operation was successful
+* Error code otherwise
+Details: Disables the periodic SET by clearing the En_prd_set bit (bit 3) in the CTRL2 register while preserving other settings, including Prd_set, continuous mode, and high-power mode.
 
 ### esp_err_t mmc5603_set_permanent_reset_mode(bool enable)
 
 Description: Performs a permanent RESET operation by enabling or disabling St_enm while preserving the bw value.
 
-    Arguments:
-        bool enable: true to enable permanent RESET, false to disable
-    Return: esp_err_t
-        ESP_OK on success
-        Error code otherwise
-    Details: Activates or deactivates the St_enm bit in the CTRL1 register to apply a constant opposing current for a permanent RESET, while preserving other configurations such as the bandwidth bw.
+Arguments:
+* bool enable: true to enable permanent RESET, false to disable
+Return: esp_err_t
+* ESP_OK on success
+* Error code otherwise
+Details: Activates or deactivates the St_enm bit in the CTRL1 register to apply a constant opposing current for a permanent RESET, while preserving other configurations such as the bandwidth bw.
 
 ### esp_err_t mmc5603_set_bandwidth(uint8_t bw_value)
 
 Description: Sets the bandwidth (BW) for acquisition duration while preserving other settings in the CTRL1 register.
 
-    Arguments:
-        uint8_t bw_value: Bandwidth value (0-3) corresponding to different acquisition durations.
-    Return: esp_err_t
-        ESP_OK if the operation was successful
-        Error code otherwise
-    Details: Configures the bandwidth for acquisition duration, which controls the measurement time:
-        0: 6.6 ms measurement time
-        1: 3.5 ms
-        2: 2 ms
-        3: 1.2 ms
+Arguments:
+* uint8_t bw_value: Bandwidth value (0-3) corresponding to different acquisition durations.
+Return: esp_err_t
+* ESP_OK if the operation was successful
+* Error code otherwise
+Details: Configures the bandwidth for acquisition duration, which controls the measurement time:
+* 0: 6.6 ms measurement time
+* 1: 3.5 ms
+* 2: 2 ms
+* 3: 1.2 ms
 
 ## Usage Example
 
